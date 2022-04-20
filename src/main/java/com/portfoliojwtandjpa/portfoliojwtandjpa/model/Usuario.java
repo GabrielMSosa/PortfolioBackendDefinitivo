@@ -37,4 +37,6 @@ public class Usuario {
     @Column(name = "apellido",length = 90)
     private String apellido;
     
+    
+    
 }

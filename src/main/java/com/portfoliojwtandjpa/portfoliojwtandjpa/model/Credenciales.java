@@ -4,6 +4,7 @@
  */
 package com.portfoliojwtandjpa.portfoliojwtandjpa.model;
 
+import com.portfoliojwtandjpa.portfoliojwtandjpa.JWT.model.User;
 import com.sun.istack.NotNull;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,14 +34,11 @@ public class Credenciales {
             @Id
             @GeneratedValue(strategy = GenerationType.IDENTITY)
             private Long id;
-            
-            @NotNull
-            @Column(name = "usuario",length = 90)
-            private String usuario;
-            
-            @NotNull
-            @Column(name = "password",length = 90)
-            private String password;
+   
+            @OneToOne(cascade = CascadeType.ALL)
+            @JoinColumn(name ="user_id" )
+            private User user;
+   
             
             @OneToOne(cascade = CascadeType.ALL)
             @JoinColumn(name ="datouser_id" )
