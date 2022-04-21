@@ -21,7 +21,7 @@ public class MyWebmvcConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         
     
-    registry.addMapping("/**")
+    registry.addMapping("/experiencias/traertodo")
             .allowedOrigins("http://localhost:4200");
     }
     

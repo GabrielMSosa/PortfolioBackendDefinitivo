@@ -60,11 +60,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
        //  http.addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class);
        
+       
+       /*,
+                                "/experiencias","/experiencias/traertodo","/experiencias/borrar/{id}",
+                                "/experiencias/traer/{id}","/experiencias/editar/{id}",
+                                "/idioma","/idioma/traertodo","/idioma/borrar/{id}","/idioma/traer/{id}","/idioma/editar/{id}",
+                                "/skill","/skill/traertodo","/skill/borrar/{id}","/skill/traer/{id}","/skill/editar/{id}",
+                                "/user/cargar","/user/traertodo","/educacion",
+                                "/educacion/traertodo","/educacion/borrar/{id}","/educacion/traer/{id}","/educacion/editsar/{id}"*/
        //ANT MATCHER TENEMOS QUE AGREGAR TODOS LOS ENDPOINTS
-        http
+       
+       http
 			.csrf().disable()    //Disabling CSRF as not using form based login
 			.authorizeRequests()
-			.antMatchers("/user/saveUser","/user/loginUser","/experiencias","/experiencias/traertodo","/experiencias/borrar/{id}","/experiencias/traer/{id}","/experiencias/editar/{id}","/idioma","/idioma/traertodo","/idioma/borrar/{id}","/idioma/traer/{id}","/idioma/editar/{id}","/skill","/skill/traertodo","/skill/borrar/{id}","/skill/traer/{id}","/skill/editar/{id}","/user/cargar","/user/traertodo","/educacion","/educacion/traertodo","/educacion/borrar/{id}","/educacion/traer/{id}","/educacion/editsar/{id}").permitAll()
+			.antMatchers("/user/saveUser","/user/loginUser").permitAll()
 			.anyRequest().authenticated()
 			.and()
 			.exceptionHandling()
@@ -75,7 +84,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			//To Verify user from second request onwards............
 			.and()
 			.addFilterBefore(secFilter, UsernamePasswordAuthenticationFilter.class)
-			;
+                        .cors();
     }
 
 

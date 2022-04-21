@@ -58,19 +58,20 @@ public class Servicios implements IServicios  {
 
     @Override
     public String guardarUser(UserDTO dato) {
-       Usuario user= new Usuario();
+       Usuario user1= new Usuario(dato.getId(),dato.getNombre(),dato.getApellido());
        DatoUser datouser=new DatoUser();
-       user.setId(dato.getId());
-       user.setNombre(dato.getNombre());
-       user.setApellido(dato.getApellido());
-       repouser.save(user);
+       
+//       user1.setId(dato.getId());
+  //     user.setNombre(dato.getNombre());
+       
+       repouser.save(user1);
        datouser.setId(dato.getId());
        datouser.setTelefono(dato.getEdad());
        datouser.setEmail(dato.getEmail());
        datouser.setEdad(Long.parseLong(dato.getEdad()));
        datouser.setAcercade(dato.getAcercademi());
        datouser.setUrlimg(dato.getUrlImg());
-       datouser.setUsuario(user);
+       datouser.setUsuario(user1);
        repodatous.save(datouser);
        return "Guardado con exito";
        

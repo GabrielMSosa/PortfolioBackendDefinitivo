@@ -26,16 +26,17 @@ public class ControllerUser {
     
     
     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping("/user/cargar")
+    @PostMapping("/userp/cargar")
     public void cargarvalores(@RequestBody UserDTO dato){
         System.out.println("post user");
         servi.guardarUser(dato);
     
     }
     @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/user/traertodo")
+    @GetMapping("/userp/traertodo")
     public List<UserDTO> traertodo(){
         System.out.println("entramos al get de user");
+        
     return servi.retornaUser();
     
     }

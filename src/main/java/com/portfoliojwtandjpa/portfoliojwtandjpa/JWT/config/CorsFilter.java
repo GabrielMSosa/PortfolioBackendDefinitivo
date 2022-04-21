@@ -26,6 +26,7 @@ import org.springframework.stereotype.Component;
  *
  * @author sosag
  */
+/*
 @Component
 @Configuration
 public class CorsFilter implements Filter {
@@ -64,6 +65,6 @@ public class CorsFilter implements Filter {
     @Override
     public void destroy() {
     }
-  
-    
-}
+}  
+*/    
+
