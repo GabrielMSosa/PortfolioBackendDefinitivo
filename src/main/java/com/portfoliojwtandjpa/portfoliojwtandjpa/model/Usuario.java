@@ -15,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
@@ -22,8 +23,9 @@ import lombok.Setter;
  */
 @Entity
 @Getter @Setter
+@ToString
 @NoArgsConstructor
-@Table(name = "usuaio")
+@Table(name = "usuario")
 @AllArgsConstructor
 public class Usuario {
     

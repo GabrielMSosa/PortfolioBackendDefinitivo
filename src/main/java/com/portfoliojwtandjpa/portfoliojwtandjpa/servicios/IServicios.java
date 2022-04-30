@@ -23,6 +23,6 @@ public interface IServicios {
     
     public void EliminarUserporId(Long id);
     
-    public void EditarUserporId(Long id);
+    public String editarPorid(Long id,UserDTO dato);
     
 }

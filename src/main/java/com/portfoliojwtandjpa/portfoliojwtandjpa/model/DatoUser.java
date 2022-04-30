@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
@@ -27,6 +28,7 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Table(name = "datouser")
 public class DatoUser {
     
@@ -51,8 +53,8 @@ public class DatoUser {
             private String urlimg;
             
             
-            
-            @OneToOne(cascade = CascadeType.ALL)
+
+            @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
             @JoinColumn(name = "usuario_id")
             private Usuario usuario;
             
