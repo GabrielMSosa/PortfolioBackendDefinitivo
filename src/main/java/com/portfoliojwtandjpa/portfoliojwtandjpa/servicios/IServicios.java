@@ -4,12 +4,11 @@
  */
 package com.portfoliojwtandjpa.portfoliojwtandjpa.servicios;
 
+import com.portfoliojwtandjpa.portfoliojwtandjpa.DTO.SocialDTO;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.DTO.UserDTO;
-import com.portfoliojwtandjpa.portfoliojwtandjpa.repository.IRepoCredenciales;
-import com.portfoliojwtandjpa.portfoliojwtandjpa.repository.IRepoDatoUsuario;
-import com.portfoliojwtandjpa.portfoliojwtandjpa.repository.IRepoUsuario;
+import com.portfoliojwtandjpa.portfoliojwtandjpa.model.RSocial;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 /**
  *
@@ -24,5 +23,12 @@ public interface IServicios {
     public void EliminarUserporId(Long id);
     
     public String editarPorid(Long id,UserDTO dato);
+
+    //===================RED SOCIAL======================
+    public List<SocialDTO> retornaRed();
+
+    public String editarRedporId(Long id,SocialDTO dato);
+
+    public String guardarRedSocial(SocialDTO dato);
     
 }

@@ -4,12 +4,15 @@
  */
 package com.portfoliojwtandjpa.portfoliojwtandjpa.servicios;
 
+import com.portfoliojwtandjpa.portfoliojwtandjpa.DTO.SocialDTO;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.DTO.UserDTO;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.model.Credenciales;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.model.DatoUser;
+import com.portfoliojwtandjpa.portfoliojwtandjpa.model.RSocial;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.model.Usuario;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.repository.IRepoCredenciales;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.repository.IRepoDatoUsuario;
+import com.portfoliojwtandjpa.portfoliojwtandjpa.repository.IRepoSocial;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.repository.IRepoUsuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +33,10 @@ public class Servicios implements IServicios  {
     private IRepoDatoUsuario repodatous;
     @Autowired 
     private IRepoCredenciales repocrede;
-
+    @Autowired 
+    private IRepoSocial reposoc;
+    
+    
     @Override
     public List<UserDTO> retornaUser() {
         List<UserDTO> dato1= new ArrayList<>();
@@ -120,6 +126,54 @@ public class Servicios implements IServicios  {
         
             
     }
+    
+    @Override
+    public List<SocialDTO> retornaRed(){
+    List<SocialDTO> dato1= new ArrayList<>();
+    List<RSocial> Rsoc=reposoc.findAll();
+        for (int i = 0; i < Rsoc.size(); i++) {
+            SocialDTO x= new SocialDTO();
+            x.setId(Rsoc.get(i).getId());
+            x.setLinkFace(Rsoc.get(i).getLinkFace());
+            x.setLinkGit(Rsoc.get(i).getLinkGit());
+            x.setLinkLn(Rsoc.get(i).getLinkLn());
+            x.setLinkTwit(Rsoc.get(i).getLinkTwit());
+            dato1.add(x);
+        }
+        
+        return dato1;
+    }
+    
+    @Override
+    public String editarRedporId(Long id,SocialDTO dato){
+        List<Usuario> user=repouser.findAll();
+        RSocial x= new RSocial(id, dato.getLinkGit(),dato.getLinkLn() ,dato.getLinkFace(),dato.getLinkTwit(), user.get(0));
+        reposoc.save(x);
+        return "editado conexito";
+    
+    
+    
+        
+        
+        
+    }
+    
+    
+    @Override
+    public String guardarRedSocial(SocialDTO dato){
+    List<Usuario> user= repouser.findAll();
+    RSocial soc= new RSocial();
+    Long pk= user.get(0).getId();
+    soc.setId(pk);
+    soc.setLinkFace(dato.getLinkFace());
+    soc.setLinkGit(dato.getLinkGit());
+    soc.setLinkLn(dato.getLinkLn());
+    soc.setLinkTwit(dato.getLinkTwit());
+    soc.setUsuario(user.get(0));
+    reposoc.save(soc);
+    System.out.println("JSON de la red social en el servicio guardar"+soc.toString());
+    return "JSON de la red social en el servicio guardar"+soc.toString();}
+    
     
     
     
