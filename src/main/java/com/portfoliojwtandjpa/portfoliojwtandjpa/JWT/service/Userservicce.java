@@ -54,7 +54,7 @@ public class Userservicce implements IUserservice, UserDetailsService {
 		org.springframework.security.core.userdetails.User springUser=null;		
 		
                 
-                if(opt.isEmpty()) {
+                if(opt.isPresent()==false) {
                     
                     //OPT ESTA VACIO¿ si es asi ya retorno la exepcion de no encontrado
 			throw new UsernameNotFoundException("User with username: " +username +" not found");
