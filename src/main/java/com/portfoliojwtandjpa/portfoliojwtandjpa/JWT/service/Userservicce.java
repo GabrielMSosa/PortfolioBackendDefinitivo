@@ -45,14 +45,16 @@ public class Userservicce implements IUserservice, UserDetailsService {
    	return userRepo.findByUsername(username);     
     }
 
+    
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //buscamos el usuario
         Optional<User> opt = userRepo.findByUsername(username);
 		
-		org.springframework.security.core.userdetails.User springUser=null;
+		org.springframework.security.core.userdetails.User springUser=null;		
 		
-		if(opt.isEmpty()) {
+                
+                if(opt.isEmpty()) {
                     
                     //OPT ESTA VACIO¿ si es asi ya retorno la exepcion de no encontrado
 			throw new UsernameNotFoundException("User with username: " +username +" not found");
