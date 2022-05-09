@@ -29,7 +29,7 @@ public class ControllerIdioma {
     
     
     
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
     @PostMapping("/idioma")
     public void CargarValor1 (@RequestBody IdiomaDTO dato){
     System.out.println("entramos al post de idioma");
@@ -37,21 +37,21 @@ public class ControllerIdioma {
         
     }
     
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
     @GetMapping("/idioma/traertodo")
     public List <IdiomaDTO>TraerTodo1(){
         System.out.println("se entro al get idioma");
     return servi.traerTodo();
     }
     
-  @CrossOrigin(origins = "http://localhost:4200")  
+  @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")  
   @DeleteMapping("/idioma/borrar/{id}")    
   public void deleteItem(@PathVariable Long id){
       System.out.println("se borro el idioma");
       servi.borrarItem(id);
  
  }
-@CrossOrigin(origins = "http://localhost:4200")  
+@CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")  
 @GetMapping("/idioma/traer/{id}")    
   public IdiomaDTO traerItem(@PathVariable Long id){
       System.out.println("entramos  al get por  id de edu");
@@ -60,7 +60,7 @@ public class ControllerIdioma {
   }
   
   
-  @CrossOrigin(origins = "http://localhost:4200")
+  @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
   @PutMapping("/idioma/editar/{id}")
  public void editarItem(@PathVariable Long id,
                         @RequestBody IdiomaDTO dato

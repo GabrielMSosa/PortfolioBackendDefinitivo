@@ -28,14 +28,14 @@ public class ControllerUser {
     private IServicios servi;
     
     
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
     @PostMapping("/userp/cargar")
     public void cargarvalores(@RequestBody UserDTO dato){
         System.out.println("post user");
         servi.guardarUser(dato);
     
     }
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
     @GetMapping("/userp/traertodo")
     public List<UserDTO> traertodo(){
         System.out.println("entramos al get de user");
@@ -46,7 +46,7 @@ public class ControllerUser {
     
 
     
-  @CrossOrigin(origins = "http://localhost:4200")
+  @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
   @PutMapping("/userp/editar/{id}")
  public void editarItem(@PathVariable Long id,
                         @RequestBody UserDTO dato
@@ -61,7 +61,7 @@ public class ControllerUser {
  //============abajo va a estar los endpoints de las redes sociales
  
  
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
     @PostMapping("/redsoc/cargar")
     public void cargarRedesSociales(@RequestBody SocialDTO dato){
         System.out.println("post user");
@@ -69,7 +69,7 @@ public class ControllerUser {
     
     }
  
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
     @GetMapping("/redsoc/traertodo")
     public List<SocialDTO> traertodoSocial(){
         System.out.println("entramos al get de user");
@@ -79,7 +79,7 @@ public class ControllerUser {
     }
  
     
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
     @PutMapping("/redsoc/editar/{id}")
     public void editarItemredsoc(@PathVariable Long id,
                         @RequestBody SocialDTO dato
