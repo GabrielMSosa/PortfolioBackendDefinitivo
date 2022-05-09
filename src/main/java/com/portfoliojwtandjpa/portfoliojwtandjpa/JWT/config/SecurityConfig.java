@@ -71,10 +71,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        //ANT MATCHER TENEMOS QUE AGREGAR TODOS LOS ENDPOINTS
        
        http
-                        .requiresChannel()
-                        .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
-                        .requiresSecure();
-                        
+               .csrf().disable()    //Disabling CSRF as not using form based login
+			.authorizeRequests()
+			.antMatchers("/user/saveUser","/user/loginUser").permitAll()
+			.anyRequest().authenticated()
+			.and()
+			.exceptionHandling()
+			.authenticationEntryPoint(authenticationEntryPoint)
+			.and()
+			.sessionManagement()
+			.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+			//To Verify user from second request onwards............
+			.and()
+			.addFilterBefore(secFilter, UsernamePasswordAuthenticationFilter.class)
+                        .cors();         
                /*
                .csrf().disable()    //Disabling CSRF as not using form based login
 			.authorizeRequests()
@@ -90,7 +100,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.addFilterBefore(secFilter, UsernamePasswordAuthenticationFilter.class)
                         .cors();
-               */
+               
+       
+              .requiresChannel()
+                        .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+                        .requiresSecure();
+                 
+       */
     }
 
 
