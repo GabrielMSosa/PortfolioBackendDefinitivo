@@ -40,7 +40,7 @@ public class EduControlle {
     
     
     
-//    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/educacion")
     public void CargarValor1 (@RequestBody EduDTO dato){
         System.out.println("entramos post educacion");
@@ -48,21 +48,21 @@ public class EduControlle {
         
     }
     
-//    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/educacion/traertodo")
     public List <EduDTO>TraerTodo1(){
         System.out.println("get educacion");
     return servi.traerTodo();
     }
     
-//  @CrossOrigin(origins = "http://localhost:4200")  
+  @CrossOrigin(origins = "http://localhost:4200")  
   @DeleteMapping("/educacion/borrar/{id}")    
   public void deleteItem(@PathVariable Long id){
       System.out.println("delete educacuin");
       servi.borrarItem(id);
  
  }
-//@CrossOrigin(origins = "http://localhost:4200")  
+@CrossOrigin(origins = "http://localhost:4200")  
 @GetMapping("/educacion/traer/{id}")    
   public EduDTO traerItem(@PathVariable Long id){
       System.out.println("entramos  al get por  id de edu");
@@ -71,7 +71,7 @@ public class EduControlle {
   }
   
   
-// @CrossOrigin(origins = "http://localhost:4200")
+ @CrossOrigin(origins = "http://localhost:4200")
   @PutMapping("/educacion/editar/{id}")
  public void editarItem(@PathVariable Long id,
                         @RequestBody EduDTO dato

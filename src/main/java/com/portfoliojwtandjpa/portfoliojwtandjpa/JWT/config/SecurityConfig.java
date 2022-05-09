@@ -83,10 +83,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			//To Verify user from second request onwards............
 			.and()
-			.addFilterBefore(secFilter, UsernamePasswordAuthenticationFilter.class);
+			.addFilterBefore(secFilter, UsernamePasswordAuthenticationFilter.class) 
+                        .cors();  
                         
                /*
-       .cors();         
+            
                .csrf().disable()    //Disabling CSRF as not using form based login
 			.authorizeRequests()
 			.antMatchers("/user/saveUser","/user/loginUser").permitAll()
