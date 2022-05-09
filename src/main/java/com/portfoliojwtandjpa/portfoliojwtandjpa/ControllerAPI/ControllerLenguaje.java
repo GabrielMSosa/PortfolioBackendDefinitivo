@@ -28,7 +28,7 @@ public class ControllerLenguaje {
     private IServiLeng servi;
        
           
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/skill")
     public void CargarValor1 (@RequestBody SkillDTO dato){
         System.out.println("entramos al post de lenguaje");
@@ -36,21 +36,21 @@ public class ControllerLenguaje {
         
     }
     
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/skill/traertodo")
     public List <SkillDTO>TraerTodo1(){
         System.out.println("get de lenguaje");
     return servi.traerTodo();
     }
     
-  @CrossOrigin(origins = "http://localhost:4200")  
+//  @CrossOrigin(origins = "http://localhost:4200")  
   @DeleteMapping("/skill/borrar/{id}")    
   public void deleteItem(@PathVariable Long id){
       System.out.println("delete de lenguaje");
       servi.borrarItem(id);
  
  }
-@CrossOrigin(origins = "http://localhost:4200")  
+//@CrossOrigin(origins = "http://localhost:4200")  
 @GetMapping("/skill/traer/{id}")    
   public SkillDTO traerItem(@PathVariable Long id){
       System.out.println("entramos  al get por  id de lenguaje");
@@ -59,7 +59,7 @@ public class ControllerLenguaje {
   }
   
   
- @CrossOrigin(origins = "http://localhost:4200")
+// @CrossOrigin(origins = "http://localhost:4200")
   @PutMapping("/skill/editar/{id}")
  public String editarItem(@PathVariable Long id,
                         @RequestBody SkillDTO dato

@@ -41,7 +41,7 @@ public class UserController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
         
-        @CrossOrigin(origins = "http://localhost:4200")
+//        @CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/saveUser")
 	public ResponseEntity<String> saveUser(@RequestBody User user) {
             
@@ -50,7 +50,7 @@ public class UserController {
 		//return new ResponseEntity<String>(message, HttpStatus.OK);
 		return ResponseEntity.ok(message);
 	}
-        @CrossOrigin(origins = "http://localhost:4200")
+//        @CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/loginUser")
 	public ResponseEntity<UserResponse> login(@RequestBody UserRequest request){
 	        System.out.println(request.getPassword());
@@ -63,7 +63,7 @@ public class UserController {
                 System.out.println(token);
 		return ResponseEntity.ok(new UserResponse(token,"Token generated successfully!"));
 	}
-	@CrossOrigin(origins = "http://localhost:4200")
+//	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/getData")
 	public ResponseEntity<String> testAfterLogin(Principal p){
 		return ResponseEntity.ok("You are accessing data after a valid Login. You are :" +p.getName());

@@ -41,7 +41,7 @@ public class ControllerExp {
     
     
     
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/experiencias")
     public void CargarValor (@RequestBody ExpeDTO dato){
         System.out.println("post exper");
@@ -49,21 +49,21 @@ public class ControllerExp {
         
     }
     
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/experiencias/traertodo")
     public List<ExpeDTO>TraerTodo(){
         System.out.println("get exper");
     return servi.traerTodo();
     }
     
-  @CrossOrigin(origins = "http://localhost:4200")  
+//  @CrossOrigin(origins = "http://localhost:4200")  
   @DeleteMapping("/experiencias/borrar/{id}")    
   public void deleteItem(@PathVariable Long id){
       System.out.println("delete expe");
       servi.borrarItem(id);
  
  }
-@CrossOrigin(origins = "http://localhost:4200")  
+//@CrossOrigin(origins = "http://localhost:4200")  
 @GetMapping("/experiencias/traer/{id}")    
   public ExpeDTO traerItem(@PathVariable Long id){
       System.out.println("get expe");
@@ -73,7 +73,7 @@ public class ControllerExp {
   
 
   
-   @CrossOrigin(origins = "http://localhost:4200")
+//   @CrossOrigin(origins = "http://localhost:4200")
    @PutMapping("/experiencias/editar/{id}")
  public void editarItem(@PathVariable Long id,
                         @RequestBody ExpeDTO dato ){
