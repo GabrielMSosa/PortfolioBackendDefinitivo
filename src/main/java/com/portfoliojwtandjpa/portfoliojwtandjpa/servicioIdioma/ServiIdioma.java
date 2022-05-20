@@ -98,7 +98,7 @@ public class ServiIdioma implements IServiIdioma {
         IdiomaDato et=new IdiomaDato();
         Long pk1=expe.getIdiomadato().getId();
         et.setNivelescritura(dato.getNivel_escritura());
-        et.setNivellectura(dato.getNivel_escritura());
+        et.setNivellectura(dato.getNivel_lectura());
         et.setId(pk1);
         expe.setIdioma(dato.getIdioma());
         expe.setIdiomadato(et);
