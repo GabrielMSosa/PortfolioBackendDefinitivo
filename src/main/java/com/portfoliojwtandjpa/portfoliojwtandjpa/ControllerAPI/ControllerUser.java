@@ -76,7 +76,7 @@ public class ControllerUser {
         
     return servi.retornaRed();
     
-    }
+    }   
  
     
     @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")

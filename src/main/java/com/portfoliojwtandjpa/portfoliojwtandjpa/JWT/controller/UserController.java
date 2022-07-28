@@ -41,7 +41,7 @@ public class UserController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
         
-        @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
+	@CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
 	@PostMapping("/saveUser")
 	public ResponseEntity<String> saveUser(@RequestBody User user) {
             
@@ -50,7 +50,7 @@ public class UserController {
 		//return new ResponseEntity<String>(message, HttpStatus.OK);
 		return ResponseEntity.ok(message);
 	}
-        @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
+	@CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
 	@PostMapping("/loginUser")
 	public ResponseEntity<UserResponse> login(@RequestBody UserRequest request){
 	        System.out.println(request.getPassword());
