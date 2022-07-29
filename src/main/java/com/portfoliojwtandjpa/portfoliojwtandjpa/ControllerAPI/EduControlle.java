@@ -6,6 +6,8 @@ package com.portfoliojwtandjpa.portfoliojwtandjpa.ControllerAPI;
 
 import com.portfoliojwtandjpa.portfoliojwtandjpa.DTO.EduDTO;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.servicioedu.IServiEdu;
+import com.portfoliojwtandjpa.portfoliojwtandjpa.varentorno.VarGlobal;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,7 +42,7 @@ public class EduControlle {
     
     
     
-    @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
+    @CrossOrigin(origins = VarGlobal.urlcross)
     @PostMapping("/educacion")
     public void CargarValor1 (@RequestBody EduDTO dato){
         System.out.println("entramos post educacion");
@@ -48,21 +50,21 @@ public class EduControlle {
         
     }
     
-    @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
+    @CrossOrigin(origins = VarGlobal.urlcross)
     @GetMapping("/educacion/traertodo")
     public List <EduDTO>TraerTodo1(){
         System.out.println("get educacion");
     return servi.traerTodo();
     }
     
-  @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")  
+  @CrossOrigin(origins = VarGlobal.urlcross )
   @DeleteMapping("/educacion/borrar/{id}")    
   public void deleteItem(@PathVariable Long id){
       System.out.println("delete educacuin");
       servi.borrarItem(id);
  
  }
-@CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")  
+@CrossOrigin(origins = VarGlobal.urlcross )
 @GetMapping("/educacion/traer/{id}")    
   public EduDTO traerItem(@PathVariable Long id){
       System.out.println("entramos  al get por  id de edu");
@@ -71,7 +73,7 @@ public class EduControlle {
   }
   
   
- @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
+ @CrossOrigin(origins = VarGlobal.urlcross)
   @PutMapping("/educacion/editar/{id}")
  public void editarItem(@PathVariable Long id,
                         @RequestBody EduDTO dato

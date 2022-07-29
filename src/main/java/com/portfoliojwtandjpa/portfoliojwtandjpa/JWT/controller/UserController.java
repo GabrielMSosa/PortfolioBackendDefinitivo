@@ -9,6 +9,8 @@ import com.portfoliojwtandjpa.portfoliojwtandjpa.JWT.entity.UserResponse;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.JWT.model.User;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.JWT.service.IUserservice;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.JWT.util.JWTUtil;
+import com.portfoliojwtandjpa.portfoliojwtandjpa.varentorno.VarGlobal;
+
 import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +43,7 @@ public class UserController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
         
-	@CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
+	@CrossOrigin(origins = VarGlobal.urlcross)
 	@PostMapping("/saveUser")
 	public ResponseEntity<String> saveUser(@RequestBody User user) {
             
@@ -50,7 +52,7 @@ public class UserController {
 		//return new ResponseEntity<String>(message, HttpStatus.OK);
 		return ResponseEntity.ok(message);
 	}
-	@CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
+	@CrossOrigin(origins = VarGlobal.urlcross)
 	@PostMapping("/loginUser")
 	public ResponseEntity<UserResponse> login(@RequestBody UserRequest request){
 	        System.out.println(request.getPassword());
@@ -63,7 +65,7 @@ public class UserController {
                 System.out.println(token);
 		return ResponseEntity.ok(new UserResponse(token,"Token generated successfully!"));
 	}
-	@CrossOrigin(origins = "https://portfolio2-a6e86.web.app")
+	@CrossOrigin(origins = VarGlobal.urlcross)
 	@PostMapping("/getData")
 	public ResponseEntity<String> testAfterLogin(Principal p){
 		return ResponseEntity.ok("You are accessing data after a valid Login. You are :" +p.getName());

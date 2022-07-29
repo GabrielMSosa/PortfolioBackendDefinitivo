@@ -7,6 +7,8 @@ package com.portfoliojwtandjpa.portfoliojwtandjpa.ControllerAPI;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.DTO.ExpeDTO;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.modelexp.Experiencia;
 import com.portfoliojwtandjpa.portfoliojwtandjpa.servicioexp.IServiExp;
+import com.portfoliojwtandjpa.portfoliojwtandjpa.varentorno.VarGlobal;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -41,7 +43,7 @@ public class ControllerExp {
     
     
     
-    @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
+    @CrossOrigin(origins =VarGlobal.urlcross)
     @PostMapping("/experiencias")
     public void CargarValor (@RequestBody ExpeDTO dato){
         System.out.println("post exper");
@@ -49,21 +51,21 @@ public class ControllerExp {
         
     }
     
-    @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
+    @CrossOrigin(origins = VarGlobal.urlcross)
     @GetMapping("/experiencias/traertodo")
     public List<ExpeDTO>TraerTodo(){
         System.out.println("get exper");
     return servi.traerTodo();
     }
     
-  @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")  
+  @CrossOrigin(origins = VarGlobal.urlcross)
   @DeleteMapping("/experiencias/borrar/{id}")    
   public void deleteItem(@PathVariable Long id){
       System.out.println("delete expe");
       servi.borrarItem(id);
  
  }
-@CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")  
+@CrossOrigin(origins = VarGlobal.urlcross)
 @GetMapping("/experiencias/traer/{id}")    
   public ExpeDTO traerItem(@PathVariable Long id){
       System.out.println("get expe");
@@ -73,7 +75,7 @@ public class ControllerExp {
   
 
   
-   @CrossOrigin(origins = "https://portfolio2-a6e86.web.app/")
+   @CrossOrigin(origins = VarGlobal.urlcross)
    @PutMapping("/experiencias/editar/{id}")
  public void editarItem(@PathVariable Long id,
                         @RequestBody ExpeDTO dato ){
