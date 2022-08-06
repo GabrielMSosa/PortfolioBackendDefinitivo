@@ -1,7 +1,7 @@
 package com.portfoliojwtandjpa.portfoliojwtandjpa.varentorno;
 
 public class VarGlobal {
-    public static final String urlcross="http://localhost:4200/";
+    public static final String urlcross="https://portfolio2-a6e86.web.app/";
 
 
 }
