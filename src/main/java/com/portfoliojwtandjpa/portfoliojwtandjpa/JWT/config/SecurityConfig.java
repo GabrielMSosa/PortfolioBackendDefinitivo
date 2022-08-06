@@ -8,9 +8,11 @@ import com.portfoliojwtandjpa.portfoliojwtandjpa.JWT.filter.SecurityFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -28,6 +30,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
+//	public static String[] SWAGGER_URL_PATHS = new String[] { "/swagger-ui.html**", "/swagger-resources/**",
+//	"/v2/api-docs**", "/webjars/**" };
+
+
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
@@ -54,8 +60,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		    .passwordEncoder(bCryptEncoder);
     }
 	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+	  web
+		.ignoring()
+		  .mvcMatchers("/swagger-ui.html/**", "/configuration/**", "/swagger-resources/**", "/v2/api-docs", "/webjars/**");
+	}
+
+
+
+
         
-        
+	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
        //  http.addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class);
@@ -74,6 +90,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                .csrf().disable()    //Disabling CSRF as not using form based login
 			.authorizeRequests()
 			.antMatchers("/user/saveUser","/user/loginUser").permitAll()
+		//	.antMatchers(SWAGGER_URL_PATHS)
+		//	.permitAll()
 			.anyRequest().authenticated()
 			.and()
 			.exceptionHandling()
